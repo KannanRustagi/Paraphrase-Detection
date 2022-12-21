@@ -2,3 +2,4 @@ streamlit
 numpy
 transformers
 torch
+protobuf==4.21.12
