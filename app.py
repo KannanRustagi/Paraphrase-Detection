@@ -3,6 +3,7 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn.functional as F
+from constants import *
 
 #Mean Pooling - Take attention mask into account for correct averaging
 def mean_pooling(model_output, attention_mask):
@@ -12,8 +13,8 @@ def mean_pooling(model_output, attention_mask):
 
 @st.cache(allow_output_mutation=True)
 def load_tokenizer_and_model():
-  tokenizer = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
-  model = AutoModel.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+  tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+  model = AutoModel.from_pretrained(checkpoint)
   return tokenizer, model
 
 with st.spinner('Tokenizer and Model are being loaded..'):
