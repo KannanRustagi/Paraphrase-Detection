@@ -13,8 +13,8 @@ def mean_pooling(model_output, attention_mask):
 
 @st.cache(allow_output_mutation=True)
 def load_tokenizer_and_model():
-  tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-  model = AutoModel.from_pretrained(checkpoint)
+  tokenizer = AutoTokenizer.from_pretrained(CHECKPOINT)
+  model = AutoModel.from_pretrained(CHECKPOINT)
   return tokenizer, model
 
 with st.spinner('Tokenizer and Model are being loaded..'):
@@ -47,7 +47,7 @@ bt = st.button("Do paraphrase identification")
 
 sentences = [src, tgt]
 if (bt):
-  if predict(sentences, model, tokenizer) > 0.6:
+  if predict(sentences, model, tokenizer) > THRESHOLD:
     st.success("Paraphrasing") 
   else:
     st.success("Not Paraphrasing")
